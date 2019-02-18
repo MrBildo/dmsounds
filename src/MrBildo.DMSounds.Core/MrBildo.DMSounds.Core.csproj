@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B4DA17C9-DF47-4339-8288-2D5D4AE1D85F}</ProjectGuid>
+    <ProjectGuid>{78514664-2772-44BC-9426-1DEBE85FE4D9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MrBildo.DMSounds</RootNamespace>
-    <AssemblyName>MrBildo.DMSounds.Common</AssemblyName>
+    <AssemblyName>MrBildo.DMSounds.Core</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,24 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions.cs" />
-    <Compile Include="ISoundFactory.cs" />
-    <Compile Include="ISoundLibrary.cs" />
-    <Compile Include="ISoundService.cs" />
-    <Compile Include="ISceneSoundFactory.cs" />
-    <Compile Include="IProxySerializable.cs" />
-    <Compile Include="ISound.cs" />
-    <Compile Include="IServiceCatalog.cs" />
-    <Compile Include="ISceneSound.cs" />
-    <Compile Include="SoundType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proxy.cs" />
+    <Compile Include="Scene.cs" />
+    <Compile Include="SceneSound.cs" />
+    <Compile Include="Sound.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MrBildo.Audio\MrBildo.Audio.csproj">
       <Project>{28c8f807-abed-4f16-b590-0ae54a38df96}</Project>
       <Name>MrBildo.Audio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrBildo.DMSounds.Common\MrBildo.DMSounds.Common.csproj">
+      <Project>{b4da17c9-df47-4339-8288-2d5d4ae1d85f}</Project>
+      <Name>MrBildo.DMSounds.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrBildo.DMSounds.Presentation.Common\MrBildo.DMSounds.Presentation.Common.csproj">
+      <Project>{19f6245d-7641-47de-b292-532d4370d607}</Project>
+      <Name>MrBildo.DMSounds.Presentation.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

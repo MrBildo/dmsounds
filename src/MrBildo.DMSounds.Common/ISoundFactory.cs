@@ -9,6 +9,6 @@ namespace MrBildo.DMSounds
 	public interface ISoundFactory
 	{
 		ISound Create(string name, string audioFile, SoundType type);
-		ISound Create(Proxy<Sound> proxy);
+		ISound Create(Proxy<ISound> proxy);
 	}
 }

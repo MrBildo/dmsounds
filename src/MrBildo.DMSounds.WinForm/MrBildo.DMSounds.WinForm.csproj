@@ -95,6 +95,10 @@
       <Project>{b4da17c9-df47-4339-8288-2d5d4ae1d85f}</Project>
       <Name>MrBildo.DMSounds.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MrBildo.DMSounds.Core\MrBildo.DMSounds.Core.csproj">
+      <Project>{78514664-2772-44bc-9426-1debe85fe4d9}</Project>
+      <Name>MrBildo.DMSounds.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MrBildo.DMSounds.Presentation.Common\MrBildo.DMSounds.Presentation.Common.csproj">
       <Project>{19f6245d-7641-47de-b292-532d4370d607}</Project>
       <Name>MrBildo.DMSounds.Presentation.Common</Name>

@@ -3,7 +3,7 @@ using MrBildo.Audio;
 
 namespace MrBildo.DMSounds
 {
-	public interface ISound
+	public interface ISound : IProxySerializable
 	{
 		string AudioFile { get; set; }
 		List<string> Categories { get; }
