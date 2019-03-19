@@ -42,7 +42,7 @@ namespace MrBildo.Audio
 
 		private bool _disposed = false;
 
-		internal AudioTrack(string name, string filename, MixingSampleProvider mixer)
+		internal AudioTrack(string filename, MixingSampleProvider mixer)
 		{
 			using (var reader = new AudioFileReader(filename))
 			{
@@ -81,8 +81,6 @@ namespace MrBildo.Audio
 			Mixer.MixerInputEnded += MixerInputEnded;
 
 		}
-
-		public string Name { get; private set; }
 
 		public TimeSpan CurrentTime => _currentStream.CurrentTime;
 

@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,24 +43,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
-    <Compile Include="ISoundFactory.cs" />
-    <Compile Include="ISoundLibrary.cs" />
+    <Compile Include="IScene.cs" />
+    <Compile Include="Factories\ISceneFactory.cs" />
+    <Compile Include="ISession.cs" />
+    <Compile Include="Factories\ISessionFactory.cs" />
+    <Compile Include="ISoundEntity.cs" />
+    <Compile Include="Factories\ISoundSettings.cs" />
+    <Compile Include="Factories\ISoundFactory.cs" />
+    <Compile Include="ISoundRepository.cs" />
     <Compile Include="ISoundService.cs" />
-    <Compile Include="ISceneSoundFactory.cs" />
-    <Compile Include="IProxySerializable.cs" />
+    <Compile Include="ISoundSettings.cs" />
     <Compile Include="ISound.cs" />
-    <Compile Include="IServiceCatalog.cs" />
-    <Compile Include="ISceneSound.cs" />
+    <Compile Include="ITheme.cs" />
     <Compile Include="SoundType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proxy.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MrBildo.Audio\MrBildo.Audio.csproj">
       <Project>{28c8f807-abed-4f16-b590-0ae54a38df96}</Project>
       <Name>MrBildo.Audio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

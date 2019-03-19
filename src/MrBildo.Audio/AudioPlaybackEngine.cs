@@ -39,7 +39,7 @@ namespace MrBildo.Audio
 	{
 		private bool _disposed = false;
 
-		private Dictionary<string, AudioTrack> _tracks = new Dictionary<string, AudioTrack>();
+		private List<AudioTrack> _tracks = new List<AudioTrack>();
 
 		private AudioPlaybackEngine(IWavePlayer deviceInterface, int sampleRate, int channels)
 		{
@@ -57,7 +57,7 @@ namespace MrBildo.Audio
 
 		private MixingSampleProvider Mixer { get; set; }
 
-		public ReadOnlyDictionary<string, AudioTrack> Tracks => new ReadOnlyDictionary<string, AudioTrack>(_tracks);
+		public IEnumerable<AudioTrack> Tracks => _tracks.ToArray();
 
 		public static AudioPlaybackEngine CreateAudioPlaybackEngine(DeviceInterfaceType type)
 		{
@@ -100,18 +100,20 @@ namespace MrBildo.Audio
 			return new AudioPlaybackEngine(deviceInterface, (int)sampleRate, (int)channels);
 		}
 
-		public AudioTrack AddAudioTrack(string name, string filename)
+		public AudioTrack AddAudioTrack(string filename)
 		{
-			if (_tracks.ContainsKey(name))
-			{
-				throw new ArgumentException($"'{name}' already exists in this dictionary");
-			}
+			var audioTrack = new AudioTrack(filename, Mixer);
 
-			var audioTrack = new AudioTrack(name, filename, Mixer);
-
-			_tracks.Add(name, audioTrack);
+			_tracks.Add(audioTrack);
 
 			return audioTrack;
+		}
+
+		public void RemoveAudioTrack(AudioTrack audioTrack)
+		{
+			_tracks.Remove(audioTrack);
+
+			audioTrack.Dispose();
 		}
 
 		public void Dispose()
@@ -130,7 +132,7 @@ namespace MrBildo.Audio
 
 			if (disposing)
 			{
-				foreach(var track in _tracks.Values)
+				foreach(var track in _tracks)
 				{
 					track.Dispose();
 				}

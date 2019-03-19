@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -32,6 +33,31 @@ namespace System
 			{
 				formatter.Serialize(stream, o);
 			}
+		}
+
+		public static void SetValue<T>(this T o, string propertyName, object value)
+		{
+			var allPropertiesAndFields =
+				typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
+					.Select(m => m as MemberInfo)
+						.Union(
+							typeof(T).GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
+								.Select(m => m as MemberInfo))
+									.ToList();
+
+			var property = allPropertiesAndFields.Where(p => p.Name == propertyName).Single();
+
+			switch (property.MemberType)
+			{
+				case MemberTypes.Field:
+					((FieldInfo)property).SetValue(o, value);
+					break;
+				case MemberTypes.Property:
+					((PropertyInfo)property).SetValue(o, value, null);
+					break;
+			}
+
+
 		}
 
 	}

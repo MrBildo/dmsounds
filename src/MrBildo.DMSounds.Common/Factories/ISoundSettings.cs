@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MrBildo.DMSounds
 {
-	public interface ISoundFactory
+	public interface ISoundSettingsFactory
 	{
-		ISound Create(string name, string audioFile, SoundType type);
-		ISound Create(Proxy<ISound> proxy);
+		ISoundSettings Create(string name, string audioFile, SoundType type);
 	}
 }

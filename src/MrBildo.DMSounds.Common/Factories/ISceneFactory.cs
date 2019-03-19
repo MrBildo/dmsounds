@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MrBildo.DMSounds
 {
-	public interface IServiceCatalog
+	public interface ISceneFactory
 	{
-		ISoundFactory Sounds { get; }
+		IScene Create(string name);
 	}
 }

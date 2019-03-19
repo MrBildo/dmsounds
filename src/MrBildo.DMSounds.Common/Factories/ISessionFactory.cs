@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace MrBildo.DMSounds
 {
-	public interface IProxySerializable
+	public interface ISessionFactory
 	{
-		string Identifier { get; }
-
-		double Version { get; }
-
-		void CreateProxy(Dictionary<string, object> values);
+		ISession Create(string name);
 	}
 }

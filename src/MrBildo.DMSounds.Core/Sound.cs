@@ -1,7 +1,6 @@
 ﻿using MrBildo.Audio;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
@@ -10,76 +9,105 @@ using System.Threading.Tasks;
 
 namespace MrBildo.DMSounds
 {
-	public class Sound : ISound, IProxySerializable
+	public class Sound : ISound
 	{
-		private const string FILE_IDENT = "Sound";
-		private const double FILE_VERSION = 1;
+		private bool _disposed = false;
 
-		public Sound(string name, string audioFile, SoundType type)
+		public Sound(ISoundSettings soundSettings, ISoundService soundService)
 		{
-			if (audioFile.IsNullorWhitespace() || !File.Exists(audioFile))
-			{
-				throw new ArgumentException("audioFile must be a valid file");
-			}
+			//first, create the audio track
+			AudioTrack = soundService.AudioEngine.AddAudioTrack(soundSettings.AudioFile);
+			
+			//set the name as the sound name initially
+			Name = soundSettings.Name;
 
-			Name = name.WhitespaceToNull() ?? throw new ArgumentException("name is not a valid name");
+			//need to save the audio file for later
+			AudioFile = soundSettings.AudioFile;
 
-			SoundType = type;
+			Type = soundSettings.Type;
+
+			//settings for audio track
+			AudioTrack.Loop = soundSettings.LoopEnabled;
+			AudioTrack.MultipartLoopEnabled = soundSettings.MultipartLoopEnabled;
+			AudioTrack.MultipartLoop = soundSettings.MultipartLoopSettings;
+
 		}
 
-		public Sound(Proxy<Sound> proxy)
+		internal Sound(string audioFile, ISoundService soundService)
 		{
-			Name = proxy.GetValue<string>("Name");
-			AudioFile = proxy.GetValue<string>("AudioFile");
-			SoundType = proxy.GetValue<SoundType>("SoundType");
-			LoopEnabled = proxy.GetValue<bool>("LoopEnabled");
-			MultipartLoopEnabled = proxy.GetValue<bool>("MultipartLoopEnabled");
-			MultipartLoopSettings = proxy.GetValue<MultipartLoop>("MultipartLoopSettings");
-
-			Categories = new List<string>(proxy.GetValue<string[]>("Categories"));
-			Keywords = new List<string>(proxy.GetValue<string[]>("Keywords"));
+			AudioTrack = soundService.AudioEngine.AddAudioTrack(audioFile);
 		}
 
 		public string Name { get; set; }
 
-		public string AudioFile { get; set; }
+		public string AudioFile { get; internal set; }
 
-		public SoundType SoundType { get; set; }
+		public SoundType Type { get; internal set; }
 
-		public List<string> Categories { get; private set; } = new List<string>();
+		private AudioTrack AudioTrack { get; set; }
 
-		public List<string> Keywords { get; private set; } = new List<string>();
+		public float Volume { get => AudioTrack.Volume; set => AudioTrack.Volume = value; }
 
-		//defaults
-		public bool LoopEnabled { get; set; }
+		public bool LoopEnabled { get => AudioTrack.Loop; set => AudioTrack.Loop = value; }
 
-		public bool MultipartLoopEnabled { get; set; }
+		public bool PanningEnabled { get => AudioTrack.PanningEnabled; set => AudioTrack.PanningEnabled = value; }
 
-		public MultipartLoop MultipartLoopSettings { get; set; }
+		public float Pan { get => AudioTrack.Pan; set => AudioTrack.Pan = value; }
 
+		public bool MultipartLoopEnabled { get => AudioTrack.MultipartLoopEnabled; set => AudioTrack.MultipartLoopEnabled = value; }
 
-		//effects go here
+		public MultipartLoop MultipartLoopSettings => AudioTrack.MultipartLoop;
 
+		public AudioTrackState State => AudioTrack.State;
 
-		//serialization stuff
-
-		string IProxySerializable.Identifier => FILE_IDENT;
-
-		double IProxySerializable.Version => FILE_VERSION;
-
-		void IProxySerializable.CreateProxy(Dictionary<string, object> values)
+		public void FadeIn(TimeSpan duration)
 		{
-			values.Add("Name", Name);
-			values.Add("AudioFile", AudioFile);
-			values.Add("SoundType", SoundType);
-			values.Add("LoopEnabled", LoopEnabled);
-			values.Add("MultipartLoopEnabled", MultipartLoopEnabled);
-			values.Add("MultipartLoopSettings", MultipartLoopSettings);
-
-			values.Add("Categories", Categories.ToArray());
-
-			values.Add("Keywords", Keywords.ToArray());
+			AudioTrack.FadeIn(duration);
 		}
 
+		public void FadeOut(TimeSpan duration)
+		{
+			AudioTrack.FadeOut(duration);
+		}
+
+		public void Play()
+		{
+			AudioTrack.Play();
+		}
+
+		public void Pause()
+		{
+			AudioTrack.Pause();
+		}
+
+		public void Stop()
+		{
+			AudioTrack.Stop();
+		}
+
+		public void Dispose()
+		{
+			Dispose(true);
+
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (_disposed)
+			{
+				return;
+			}
+
+			if (disposing)
+			{
+				if(AudioTrack != null)
+				{
+					AudioTrack.Dispose();
+				}
+			}
+
+			_disposed = true;
+		}
 	}
 }
