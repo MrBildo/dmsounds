@@ -54,17 +54,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Castle\NonPublicComponentActivator.cs" />
+    <Compile Include="Repositories\SceneRepository.cs" />
     <Compile Include="SceneSoundAudioTrackInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="Session.cs" />
+    <Compile Include="Repositories\SessionRepository.cs" />
     <Compile Include="Sound.cs" />
     <Compile Include="Serialization\MappedContractResolver.cs" />
     <Compile Include="Serialization\SceneConverter.cs" />
     <Compile Include="Serialization\SoundSettingsConverter.cs" />
     <Compile Include="SoundSettings.cs" />
-    <Compile Include="SoundRepository.cs" />
     <Compile Include="SoundService.cs" />
+    <Compile Include="Repositories\SoundSettingsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MrBildo.Audio\MrBildo.Audio.csproj">
@@ -83,5 +85,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

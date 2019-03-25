@@ -21,25 +21,25 @@ namespace MrBildo.DMSounds.WinForm
 		{
 			Container = BuildContainer();
 
-			var testFile = @"D:\mrbildo\Music\Harvey Danger\Harvey Danger - Flagpole Sitta.mp3";
-			var testFile1 = @"D:\DnD\Audio\Dark Magic Shadow Spell Cast 2.mp3";
+			//var testFile = @"D:\mrbildo\Music\Harvey Danger\Harvey Danger - Flagpole Sitta.mp3";
+			//var testFile1 = @"D:\DnD\Audio\Dark Magic Shadow Spell Cast 2.mp3";
 
-			var settingsFactory = Container.Resolve<ISoundSettingsFactory>();
-			//var factory = Container.Resolve<ISceneFactory>();
+			//var settingsFactory = Container.Resolve<ISoundSettingsFactory>();
+			////var factory = Container.Resolve<ISceneFactory>();
 
-			var settings = settingsFactory.Create("remove this", testFile, SoundType.MusicBed);
-			var settings1 = settingsFactory.Create("remove this", testFile1, SoundType.MusicBed);
+			//var settings = settingsFactory.Create("remove this", testFile, SoundType.MusicBed);
+			//var settings1 = settingsFactory.Create("remove this", testFile1, SoundType.MusicBed);
 
-			settings1.LoopEnabled = true;
+			//settings1.LoopEnabled = true;
 
-			var sceneFactory = Container.Resolve<ISceneFactory>();
+			//var sceneFactory = Container.Resolve<ISceneFactory>();
 
-			var scene = sceneFactory.Create("My Scene");
+			//var scene = sceneFactory.Create("My Scene");
 
-			scene.AddMusicBed(settings);
-			scene.AddMusicBed(settings1);
+			//scene.AddMusicBed(settings);
+			//scene.AddMusicBed(settings1);
 
-			scene.Play();
+			//scene.Play();
 
 			//var soundFactory = Container.Resolve<ISoundFactory>();
 
@@ -90,6 +90,11 @@ namespace MrBildo.DMSounds.WinForm
 			container.Register(
 				Component.For<IScene>().ImplementedBy<Scene>().LifeStyle.Transient,
 				Component.For<ISceneFactory>().AsFactory()
+			);
+
+			container.Register(
+				Component.For<ISession>().ImplementedBy<Session>().LifeStyle.Transient,
+				Component.For<ISessionFactory>().AsFactory()
 			);
 
 			//container.Register(

@@ -14,12 +14,12 @@ namespace MrBildo.DMSounds
 
 		IEnumerable<IScene> Scenes { get; }
 
-		void AddScene(IScene scene, int postion = 0);
+		void AddScene(IScene scene, int position = 0);
 
-		void RepositionScene(IScene scene);
+		void RepositionScene(IScene scene, int position);
 
 		void RemoveScene(IScene scene);
 
-		void TransitionScenes(IScene fromScene, IScene toScene, TimeSpan gap, bool fade = true);
+		void TransitionScenes(IScene fromScene, IScene toScene, TimeSpan fade, TimeSpan gap);
 	}
 }

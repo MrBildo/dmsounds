@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrBildo.DMSounds.WinForm", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrBildo.DMSounds.Core", "MrBildo.DMSounds.Core\MrBildo.DMSounds.Core.csproj", "{78514664-2772-44BC-9426-1DEBE85FE4D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrBildo.DMSounds.App", "MrBildo.DMSounds.App\MrBildo.DMSounds.App.csproj", "{2755AFB0-E227-41A8-811C-AE14A266595E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{78514664-2772-44BC-9426-1DEBE85FE4D9}.Layout|Any CPU.Build.0 = Release|Any CPU
 		{78514664-2772-44BC-9426-1DEBE85FE4D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78514664-2772-44BC-9426-1DEBE85FE4D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2755AFB0-E227-41A8-811C-AE14A266595E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2755AFB0-E227-41A8-811C-AE14A266595E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2755AFB0-E227-41A8-811C-AE14A266595E}.FontSelection|Any CPU.ActiveCfg = Release|Any CPU
+		{2755AFB0-E227-41A8-811C-AE14A266595E}.FontSelection|Any CPU.Build.0 = Release|Any CPU
+		{2755AFB0-E227-41A8-811C-AE14A266595E}.Layout|Any CPU.ActiveCfg = Release|Any CPU
+		{2755AFB0-E227-41A8-811C-AE14A266595E}.Layout|Any CPU.Build.0 = Release|Any CPU
+		{2755AFB0-E227-41A8-811C-AE14A266595E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2755AFB0-E227-41A8-811C-AE14A266595E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -43,17 +43,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="IO\FileAsync.cs" />
     <Compile Include="IScene.cs" />
     <Compile Include="Factories\ISceneFactory.cs" />
+    <Compile Include="Repositories\ISceneRepository.cs" />
     <Compile Include="ISession.cs" />
     <Compile Include="Factories\ISessionFactory.cs" />
+    <Compile Include="Repositories\ISessionRepository.cs" />
     <Compile Include="ISoundEntity.cs" />
     <Compile Include="Factories\ISoundSettings.cs" />
     <Compile Include="Factories\ISoundFactory.cs" />
-    <Compile Include="ISoundRepository.cs" />
     <Compile Include="ISoundService.cs" />
     <Compile Include="ISoundSettings.cs" />
     <Compile Include="ISound.cs" />
+    <Compile Include="Repositories\ISoundSettingsRepository.cs" />
     <Compile Include="ITheme.cs" />
     <Compile Include="SoundType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
