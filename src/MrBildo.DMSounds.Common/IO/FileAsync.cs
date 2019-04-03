@@ -21,7 +21,7 @@ namespace MrBildo.DMSounds.IO
 
 				while ((read = await fs.ReadAsync(buffer, 0, buffer.Length)) != 0)
 				{
-					var text = Encoding.Unicode.GetString(buffer, 0, read);
+					var text = Encoding.UTF8.GetString(buffer, 0, read);
 
 					sb.Append(text);
 				}

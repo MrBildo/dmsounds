@@ -35,11 +35,11 @@ namespace MrBildo.Audio
 		Stereo = 2
 	}
 
-	public class AudioPlaybackEngine : IDisposable
+	public class AudioPlaybackEngine : IDisposable, IAudioPlaybackEngine
 	{
 		private bool _disposed = false;
 
-		private List<AudioTrack> _tracks = new List<AudioTrack>();
+		private List<IAudioTrack> _tracks = new List<IAudioTrack>();
 
 		private AudioPlaybackEngine(IWavePlayer deviceInterface, int sampleRate, int channels)
 		{
@@ -57,9 +57,9 @@ namespace MrBildo.Audio
 
 		private MixingSampleProvider Mixer { get; set; }
 
-		public IEnumerable<AudioTrack> Tracks => _tracks.ToArray();
+		public IEnumerable<IAudioTrack> Tracks => _tracks.ToArray();
 
-		public static AudioPlaybackEngine CreateAudioPlaybackEngine(DeviceInterfaceType type)
+		public static IAudioPlaybackEngine CreateAudioPlaybackEngine(DeviceInterfaceType type)
 		{
 			return CreateAudioPlaybackEngine(type, SampleRate.CD, Channels.Stereo, 200);
 		}
@@ -100,7 +100,7 @@ namespace MrBildo.Audio
 			return new AudioPlaybackEngine(deviceInterface, (int)sampleRate, (int)channels);
 		}
 
-		public AudioTrack AddAudioTrack(string filename)
+		public IAudioTrack AddAudioTrack(string filename)
 		{
 			var audioTrack = new AudioTrack(filename, Mixer);
 
@@ -109,7 +109,7 @@ namespace MrBildo.Audio
 			return audioTrack;
 		}
 
-		public void RemoveAudioTrack(AudioTrack audioTrack)
+		public void RemoveAudioTrack(IAudioTrack audioTrack)
 		{
 			_tracks.Remove(audioTrack);
 

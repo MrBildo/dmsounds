@@ -44,7 +44,7 @@ namespace MrBildo.DMSounds
 
 		public SoundType Type { get; internal set; }
 
-		private AudioTrack AudioTrack { get; set; }
+		private IAudioTrack AudioTrack { get; set; }
 
 		public float Volume { get => AudioTrack.Volume; set => AudioTrack.Volume = value; }
 

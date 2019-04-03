@@ -66,6 +66,8 @@
     <Compile Include="AudioTrack.cs" />
     <Compile Include="Effects\Effect.cs" />
     <Compile Include="Effects\OscillatingPanEffect.cs" />
+    <Compile Include="IAudioPlaybackEngine.cs" />
+    <Compile Include="IAudioTrack.cs" />
     <Compile Include="MultipartLoop.cs" />
     <Compile Include="NAudio\Extensions.cs" />
     <Compile Include="NAudio\FadeInOutStopSampleProvider.cs" />

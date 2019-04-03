@@ -1,5 +1,4 @@
-﻿using MrBildo.Audio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MrBildo.DMSounds
 {
-	public interface ISoundService
+	public interface ISoundSettingsRepositoryFactory
 	{
-		IAudioPlaybackEngine AudioEngine { get; }
+		ISoundSettingsRepository Create(string path);
 	}
 }

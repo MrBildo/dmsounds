@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MrBildo.DMSounds.Presentation.Common")]
+[assembly: AssemblyTitle("MrBildo.DMSounds.App.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MrBildo.DMSounds.Presentation.Common")]
+[assembly: AssemblyProduct("MrBildo.DMSounds.App.Common")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("19f6245d-7641-47de-b292-532d4370d607")]
+[assembly: Guid("2eaaf84a-a3e9-4a58-a047-61c6971b84ed")]
 
 // Version information for an assembly consists of the following four values:
 //

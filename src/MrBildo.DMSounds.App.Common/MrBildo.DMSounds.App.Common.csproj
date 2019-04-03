@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B4DA17C9-DF47-4339-8288-2D5D4AE1D85F}</ProjectGuid>
+    <ProjectGuid>{2EAAF84A-A3E9-4A58-A047-61C6971B84ED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MrBildo.DMSounds</RootNamespace>
-    <AssemblyName>MrBildo.DMSounds.Common</AssemblyName>
+    <RootNamespace>MrBildo.DMSounds.App</RootNamespace>
+    <AssemblyName>MrBildo.DMSounds.App.Common</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,9 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,32 +42,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions.cs" />
-    <Compile Include="Factories\ISoundSettingsRepositoryFactory.cs" />
-    <Compile Include="IO\FileAsync.cs" />
-    <Compile Include="IScene.cs" />
-    <Compile Include="Factories\ISceneFactory.cs" />
-    <Compile Include="Repositories\ISceneRepository.cs" />
-    <Compile Include="ISession.cs" />
-    <Compile Include="Factories\ISessionFactory.cs" />
-    <Compile Include="Repositories\ISessionRepository.cs" />
-    <Compile Include="ISoundEntity.cs" />
-    <Compile Include="Factories\ISoundSettings.cs" />
-    <Compile Include="Factories\ISoundFactory.cs" />
-    <Compile Include="ISoundService.cs" />
-    <Compile Include="ISoundSettings.cs" />
-    <Compile Include="ISound.cs" />
-    <Compile Include="Repositories\ISoundSettingsRepository.cs" />
-    <Compile Include="ITheme.cs" />
-    <Compile Include="SoundType.cs" />
+    <Compile Include="EventAggregator.cs" />
+    <Compile Include="Factories\IDialogWindowViewFactory.cs" />
+    <Compile Include="Factories\IDialogWindowViewModelFactory.cs" />
+    <Compile Include="Factories\ISoundSettingsViewModelFactory.cs" />
+    <Compile Include="IEventAggregator.cs" />
+    <Compile Include="Messages\SoundLibrarySelectedItemChanged.cs" />
+    <Compile Include="Models\SoundLibraryModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModels\IMainViewModel.cs" />
+    <Compile Include="ViewModels\ISceneEditorViewModel.cs" />
+    <Compile Include="ViewModels\ISceneSelectionViewModel.cs" />
+    <Compile Include="ViewModels\ISceneSoundsViewModel.cs" />
+    <Compile Include="ViewModels\ISoundLibraryViewModel.cs" />
+    <Compile Include="ViewModels\ISoundSettingsEditorViewModel.cs" />
+    <Compile Include="ViewModels\ISoundSettingsViewModel.cs" />
+    <Compile Include="ViewModels\IViewModel.cs" />
+    <Compile Include="ViewModels\IWindowViewModel.cs" />
+    <Compile Include="Views\IDialogWindowView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MrBildo.Audio\MrBildo.Audio.csproj">
-      <Project>{28c8f807-abed-4f16-b590-0ae54a38df96}</Project>
-      <Name>MrBildo.Audio</Name>
+    <ProjectReference Include="..\MrBildo.DMSounds.Common\MrBildo.DMSounds.Common.csproj">
+      <Project>{b4da17c9-df47-4339-8288-2d5d4ae1d85f}</Project>
+      <Name>MrBildo.DMSounds.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

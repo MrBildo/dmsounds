@@ -1,0 +1,21 @@
+﻿<Window x:Class="MrBildo.DMSounds.App.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MrBildo.DMSounds.App"
+        xmlns:viewModel="clr-namespace:MrBildo.DMSounds.App.ViewModels"
+        xmlns:view="clr-namespace:MrBildo.DMSounds.App.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<Grid>
+		<!--<Grid.Resources>
+			<DataTemplate DataType="{x:Type viewModel:SoundLibraryViewModel}">
+				<view:SoundLibraryView />
+			</DataTemplate>
+		</Grid.Resources>
+
+		<ContentControl Content="{Binding SoundLibraryViewModel}" />-->
+		<Button Content="Open Library Dialog" Click="Button_Click" />
+	</Grid>
+</Window>

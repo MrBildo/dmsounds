@@ -17,7 +17,7 @@ namespace MrBildo.Audio
 		Playing
 	}
 
-	public class AudioTrack
+	public class AudioTrack : IAudioTrack
 	{
 		private RawSourceWaveStream _currentStream = null;
 

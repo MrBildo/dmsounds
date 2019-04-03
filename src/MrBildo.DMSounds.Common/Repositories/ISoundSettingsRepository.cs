@@ -1,15 +1,19 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MrBildo.DMSounds
 {
 	public interface ISoundSettingsRepository
 	{
-		ISoundSettings LoadSoundSettings(string filename);
-		void SaveSoundSettings(ISoundSettings soundSettings, string filename);
+		Task<IEnumerable<ISoundSettings>> LoadAllAsync();
+		Task<IEnumerable<ISoundSettings>> LoadAllByTypeAsync(SoundType soundType);
+		Task<(IEnumerable<string> Categories, IEnumerable<ISoundSettings> Items)> LoadAllByTypeAndCategories(SoundType soundType, string[] categories);
 
 		Task<ISoundSettings> LoadSoundSettingsAsync(string filename);
-		Task SaveSoundSettingsAsync(ISoundSettings soundSettings, string filename);
+
+		Task SaveSoundSettingsAsync(ISoundSettings soundSettings);
 
 		void DeleteSoundSettings(ISoundSettings soundSettings);
+
 	}
 }

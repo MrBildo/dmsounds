@@ -14,6 +14,6 @@ namespace MrBildo.DMSounds
 			AudioEngine = AudioPlaybackEngine.CreateAudioPlaybackEngine(DeviceInterfaceType.WasapiOut);
 		}
 
-		public AudioPlaybackEngine AudioEngine { get; private set; }
+		public IAudioPlaybackEngine AudioEngine { get; private set; }
 	}
 }

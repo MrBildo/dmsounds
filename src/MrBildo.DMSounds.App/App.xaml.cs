@@ -17,16 +17,16 @@ namespace MrBildo.DMSounds.App
 	/// </summary>
 	public partial class App : Application
 	{
+		private static IWindsorContainer _container;
+
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{
-			using (var continer = BuildContainer())
-			{
+			_container = BuildContainer();
 
-			}
-
-			var main = new MainWindow();
+			var main = _container.Resolve<MainView>();
 
 			main.Show();
+
 		}
 
 		private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
@@ -45,6 +45,13 @@ namespace MrBildo.DMSounds.App
 			container.AddFacility<TypedFactoryFacility>();
 
 			container.Register(
+				Component.For<ISoundSettingsRepository>()
+					.ImplementedBy<SoundSettingsRepository>()
+						.LifeStyle
+							.Transient
+								.DependsOn(Dependency.OnValue("path", ".\\sounds"))); //TODO: configuration!
+
+			container.Register(
 
 				//type factories
 				Types.FromAssemblyInThisApplication()
@@ -55,29 +62,33 @@ namespace MrBildo.DMSounds.App
 				Classes.FromAssemblyInThisApplication()
 					.Where(a => a.Name.EndsWith("Repository"))
 						.WithServiceDefaultInterfaces()
-							.LifestyleSingleton()
+							.LifestyleSingleton(),
+				
+				//view models
+				Classes.FromAssemblyInThisApplication()
+					.Where(a => a.Name.EndsWith("ViewModel"))
+						.WithServiceDefaultInterfaces()
+							.LifestyleTransient(),
+
+				//views
+				Classes.FromAssemblyInThisApplication()
+					.Where(a => a.Name.EndsWith("View"))
+						.WithServiceDefaultInterfaces()
+							.LifestyleTransient()
 
 			);
 
-			container.Register(
-				Component.For<ISound>().ImplementedBy<Sound>().LifeStyle.Transient
-			);
+			container.Register(Component.For<ISound>().ImplementedBy<Sound>().LifeStyle.Transient);
 
-			container.Register(
-				Component.For<ISoundSettings>().ImplementedBy<SoundSettings>().LifeStyle.Transient
-			);
+			container.Register(Component.For<ISoundSettings>().ImplementedBy<SoundSettings>().LifeStyle.Transient);
 
-			container.Register(
-				Component.For<IScene>().ImplementedBy<Scene>().LifeStyle.Transient
-			);
+			container.Register(Component.For<IScene>().ImplementedBy<Scene>().LifeStyle.Transient);
 
-			container.Register(
-				Component.For<ISession>().ImplementedBy<Session>().LifeStyle.Transient
-			);
+			container.Register(Component.For<ISession>().ImplementedBy<Session>().LifeStyle.Transient);
 
-			container.Register(
-				Component.For<ISoundService>().ImplementedBy<SoundService>().LifeStyle.Singleton
-			);
+			container.Register(Component.For<ISoundService>().ImplementedBy<SoundService>().LifeStyle.Singleton);
+
+			container.Register(Component.For<IEventAggregator>().ImplementedBy<EventAggregator>().LifeStyle.Singleton);
 
 			return container;
 		} 

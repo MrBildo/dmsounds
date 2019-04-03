@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>MrBildo.DMSounds.App</RootNamespace>
     <AssemblyName>MrBildo.DMSounds.App</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,11 +42,17 @@
     <Reference Include="Castle.Windsor, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Windsor.5.0.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,7 +71,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SoundSettingsEditorViewModel.cs" />
+    <Compile Include="ViewModels\SceneSelectionViewModel.cs" />
+    <Compile Include="ViewModels\SceneSoundsViewModel.cs" />
+    <Compile Include="ViewModels\SoundLibraryViewModel.cs" />
+    <Compile Include="ViewModels\SoundSettingsViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="ViewModels\WindowViewModel.cs" />
+    <Compile Include="Views\SoundLibraryView.xaml.cs">
+      <DependentUpon>SoundLibraryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SoundSettingsView.xaml.cs">
+      <DependentUpon>SoundSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogWindowView.xaml.cs">
+      <DependentUpon>DialogWindowView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -72,10 +96,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\SoundLibraryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SoundSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -105,6 +141,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MrBildo.Audio\MrBildo.Audio.csproj">
+      <Project>{28c8f807-abed-4f16-b590-0ae54a38df96}</Project>
+      <Name>MrBildo.Audio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MrBildo.DMSounds.App.Common\MrBildo.DMSounds.App.Common.csproj">
+      <Project>{2eaaf84a-a3e9-4a58-a047-61c6971b84ed}</Project>
+      <Name>MrBildo.DMSounds.App.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MrBildo.DMSounds.Common\MrBildo.DMSounds.Common.csproj">
       <Project>{b4da17c9-df47-4339-8288-2d5d4ae1d85f}</Project>
       <Name>MrBildo.DMSounds.Common</Name>
@@ -114,5 +158,6 @@
       <Name>MrBildo.DMSounds.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

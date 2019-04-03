@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace System
@@ -56,9 +57,29 @@ namespace System
 					((PropertyInfo)property).SetValue(o, value, null);
 					break;
 			}
-
-
 		}
 
+		public static string SpacesToDashes(this string s)
+		{
+			//first remove all extraneous spaces 
+			var newString = Regex.Replace(s, " {2,}", " ");
+
+			return newString.Replace(' ', '-');
+		}
+
+		public static bool ContainsAll<T>(this IEnumerable<T> query, IEnumerable<T> items)
+		{
+			return !query.Except(items).Any();
+		}
+
+		public static bool ContainsAny<T>(this IEnumerable<T> query, IEnumerable<T> items)
+		{
+			return query.Any(i => items.Contains(i));
+		}
+
+		public static string[] RemoveNullorWhitespace(this string[] items)
+		{
+			return items.Where(i => !i.IsNullorWhitespace()).ToArray();
+		}
 	}
 }
