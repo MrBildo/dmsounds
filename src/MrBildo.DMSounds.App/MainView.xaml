@@ -9,13 +9,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 	<Grid>
-		<!--<Grid.Resources>
-			<DataTemplate DataType="{x:Type viewModel:SoundLibraryViewModel}">
-				<view:SoundLibraryView />
-			</DataTemplate>
-		</Grid.Resources>
-
-		<ContentControl Content="{Binding SoundLibraryViewModel}" />-->
 		<Button Content="Open Library Dialog" Click="Button_Click" />
 	</Grid>
 </Window>

@@ -32,8 +32,6 @@ namespace MrBildo.DMSounds.App
 			_soundSettingsViewModelFactory = soundSettingsViewModelFactory;
 			_windowViewModelFactory = windowViewModelFactory;
 
-			//DataContext = viewModel;
-
 			InitializeComponent();
 		}
 
@@ -45,12 +43,7 @@ namespace MrBildo.DMSounds.App
 
 			var view = _dialogWindowViewFactory.Create(container);
 
-			//TODO: add this to interface
-			((Window)view).Owner = this;
-
-			//var view = _dialogWindowViewFactory.Create(_soundSettingsViewModelFactory.Create());
-
-			view.ShowDialog();
+			view.ShowDialog(this);
 		}
 	}
 }

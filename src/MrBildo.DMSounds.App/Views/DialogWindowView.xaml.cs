@@ -26,5 +26,12 @@ namespace MrBildo.DMSounds.App.Views
 
             InitializeComponent();
         }
-    }
+
+		public bool? ShowDialog(Window owner)
+		{
+			Owner = owner;
+
+			return ShowDialog();
+		}
+	}
 }

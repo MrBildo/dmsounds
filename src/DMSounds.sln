@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrBildo.DMSounds.App", "MrB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrBildo.DMSounds.App.Common", "MrBildo.DMSounds.App.Common\MrBildo.DMSounds.App.Common.csproj", "{2EAAF84A-A3E9-4A58-A047-61C6971B84ED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{53C41FF1-8C6C-401D-A72F-5AE7721BD867}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4DA17C9-DF47-4339-8288-2D5D4AE1D85F} = {53C41FF1-8C6C-401D-A72F-5AE7721BD867}
+		{2EAAF84A-A3E9-4A58-A047-61C6971B84ED} = {53C41FF1-8C6C-401D-A72F-5AE7721BD867}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30E17253-E76C-4700-8B38-C15F24C690C4}

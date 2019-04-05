@@ -51,7 +51,7 @@ namespace MrBildo.DMSounds
 
 		public MultipartLoop MultipartLoopSettings { get; set; }
 
-		public string Filename { get; private set; }
+		public string Filename { get; private set; } //TODO: why is this public??
 
 
 		//effects go here

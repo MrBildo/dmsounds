@@ -20,6 +20,7 @@ namespace MrBildo.Audio
 	public class AudioTrack : IAudioTrack
 	{
 		private RawSourceWaveStream _currentStream = null;
+        
 
 		private ISampleProvider _outputSample = null;
 
